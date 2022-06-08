@@ -29,11 +29,10 @@ grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 
 .calculator-grid > button {
     cursor: pointer;
-    font-size: 3rem;
-    border: 1.5px, double #FFFFFF;
-    outline: none;background-color: rbga (255, 255, 255, 0.75);
-
-
+    font-size: 2rem;
+    border: 1px, solid #FFFFFF;
+    outline: none;
+    background-color: rbga (255, 255, 255, 0.75);
 }
 
 
@@ -66,12 +65,12 @@ grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 
 .output .previous-operand {
     color: rgb(255, 255, 255, .75);
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .output .current-operand {
     color: whitesmoke;
-    font-size: 3rem;
+    font-size: 2.5rem;
     
 }
 
