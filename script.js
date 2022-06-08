@@ -131,3 +131,4 @@ getDisplayNumber (number) {
         return intergerDisplay
     }
 }
+
