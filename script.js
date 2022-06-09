@@ -17,11 +17,12 @@ const currentOperandTextElement = document.querySelector('[data-current-operand]
 const Calculator = new Calculator(previousOpendTextElement. currentOperandTextElement)
 
 clear() {
-    this.currentOperand =''
-    this.prevousOperand =''
+    this.currentOperand = ''
+    this.previousOperand = ''
     this.operation = undefined
+  }
 
-}
+
 
 delete() {
     this.currentOperand = this.currentOperand.toString().slice(0, -1)
@@ -34,10 +35,13 @@ deleteButton.addEventListener('click', button  => {
 })
 
 appendNumber(number) {
+
     if (number === '.' && this.currentOperand.includes('.')) return
-    this.currentOperand = this.currentOperand.toString() + number.toString()}
+    this.currentOperand = this.currentOperand.toString() + number.toString()
+}
 
 chooseOperation(operation) {
+    this.operation = operation
     if (this.currentOperand === '') return
     if (this.prevousOperand !== '') {
         this.compute()
@@ -72,8 +76,7 @@ compute() {
 
 
 updateDisplay() {
-    this.currentOperandTextElement.innerText = 
-    this.getDisplayNumber(this.currentOperand)
+    this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
     if (this.operation != null) {
     this.previousOpendTextElement.innerText = 
     '${this.getDisplayNumber(this.previousOperand)} ${this.operation}'
