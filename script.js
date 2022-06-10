@@ -24,9 +24,9 @@ clear() ;{
 
 
 
-delete(); {
+  delete() ;{
     this.currentOperand = this.currentOperand.toString().slice(0, -1)
-}
+  }
  
 deleteButton.addEventListener('click', button  => {
     Calculator.delete()
@@ -113,7 +113,7 @@ allClearButton.addEventListener('click', button => {
 
 getDisplayNumber (number); {
     const stringNumber = number.toString()
-    const innerDigits = parseFloat(stringNumber.split('.') [0])
+    const intergerDigits = parseFloat(stringNumber.split('.')[0])
     const decimalDigits = stringNumber.split('.')[1]
     let intergerDisplay 
     if (isNaN(intergerDigits)) {
@@ -123,10 +123,12 @@ getDisplayNumber (number); {
         intergerDisplay = intergerDigits.toLocaleString('en', {maxiumFractionDigits: 0})
 }
 
+
+}
     if (decimalDigits !=null) {
         return '${intgerDisplay}.${decimalDigits}'
     }
     else {
         return intergerDisplay
     }
-}}
+}
