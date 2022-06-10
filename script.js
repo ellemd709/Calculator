@@ -24,7 +24,7 @@ clear() ;{
 
 
 
-delete() ;{
+delete(); {
     this.currentOperand = this.currentOperand.toString().slice(0, -1)
 }
  
@@ -40,13 +40,12 @@ appendNumber(number) ;{
     }
 
 chooseOperation(operation); {
-    this.operation = operation
-    if (this.currentOperand === '') return
-    if (this.prevousOperand !== '') {
-        this.compute()
+     if  (this.operation === '') return
+     if (this.previousOperand !== '') {
+     this.compute()
 }
 
-compute() ;{
+compute(); {
     let computation 
     const prev = parseFloat(this.prevousOperand)
     const current = parseFloat(this.currentOperand)
@@ -75,8 +74,13 @@ compute() ;{
 
 
 updateDisplay(); {
-        this.currentOperandTextElement.innerText = this.currentOperand
+        this.currentOperandTextElement.innerText = 
+        this.getDisplayNumber(this.currentOperand)
+        if (this.operation != null) {
+        this.previousOpendTextElement.innerText = 
+        '$(this.getDisplayNumber(this.previousOperand)) ${this.operation}'
 
+}
 }
 
 
