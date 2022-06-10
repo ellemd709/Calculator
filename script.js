@@ -16,7 +16,7 @@ const currentOperandTextElement = document.querySelector('[data-current-operand]
 
 const Calculator = new Calculator(previousOpendTextElement. currentOperandTextElement)
 
-clear() {
+clear() ;{
     this.currentOperand = ''
     this.previousOperand = ''
     this.operation = undefined
@@ -24,7 +24,7 @@ clear() {
 
 
 
-delete() {
+delete() ;{
     this.currentOperand = this.currentOperand.toString().slice(0, -1)
 }
  
@@ -34,20 +34,19 @@ deleteButton.addEventListener('click', button  => {
 
 })
 
-appendNumber(number) {
-
+appendNumber(number) ;{
     if (number === '.' && this.currentOperand.includes('.')) return
     this.currentOperand = this.currentOperand.toString() + number.toString()
-}
+    }
 
-chooseOperation(operation) {
+chooseOperation(operation); {
     this.operation = operation
     if (this.currentOperand === '') return
     if (this.prevousOperand !== '') {
         this.compute()
 }
 
-compute() {
+compute() ;{
     let computation 
     const prev = parseFloat(this.prevousOperand)
     const current = parseFloat(this.currentOperand)
@@ -75,17 +74,11 @@ compute() {
 }
 
 
-updateDisplay() {
-    this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
-    if (this.operation != null) {
-    this.previousOpendTextElement.innerText = 
-    '${this.getDisplayNumber(this.previousOperand)} ${this.operation}'
-    } else {
-        this.previousOpendTextElement.innerText = ''
-    }
-  }
+updateDisplay(); {
+        this.currentOperandTextElement.innerText = this.currentOperand
 
 }
+
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -103,7 +96,7 @@ operationButtons.forEach(button => {
 })
 })
 
-equalsButton.addEventListener('cli(ck', button => {
+equalsButton.addEventListener('click', button => {
     Calculator.compute()
     Calculator.updateDisplay()
 })
@@ -114,7 +107,7 @@ allClearButton.addEventListener('click', button => {
     Calculator.updateDisplay()
 })
 
-getDisplayNumber (number) {
+getDisplayNumber (number); {
     const stringNumber = number.toString()
     const innerDigits = parseFloat(stringNumber.split('.') [0])
     const decimalDigits = stringNumber.split('.')[1]
@@ -132,5 +125,4 @@ getDisplayNumber (number) {
     else {
         return intergerDisplay
     }
-}
-
+}}
