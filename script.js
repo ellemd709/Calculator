@@ -14,7 +14,7 @@ const allClearButton = document.querySelector('[data-all-clear]')
 const previousOpendTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
 
-const Calculator = new Calculator(previousOpendTextElement. currentOperandTextElement)
+const calculator = new Calculator(previousOpendTextElement. currentOperandTextElement)
 
 clear() ;{
     this.currentOperand = ''
@@ -24,48 +24,50 @@ clear() ;{
 
 
 
-  delete() ;{
+  del() ;{
     this.currentOperand = this.currentOperand.toString().slice(0, -1)
   }
  
 deleteButton.addEventListener('click', button  => {
-    Calculator.delete()
+    Calculator.del()
     Calculator.updateDisplay()
 
 })
 
 appendNumber(number) ;{
-    if (number === '.' && this.currentOperand.includes('.')) return
-    this.currentOperand = this.currentOperand.toString() + number.toString()
+    if (!(number === '.' && this.currentOperand.includes('.')))
+    {   
+        this.currentOperand = this.currentOperand.toString() + number.toString()
     }
+}
 
 chooseOperation(operation); {
-     if  (this.operation === '') return
+     if  (this.operation === '') this.operation = operation;
      if (this.previousOperand !== '') {
-     this.compute()
+        this.compute()
+     }
 }
 
 compute(); {
     let computation 
     const prev = parseFloat(this.prevousOperand)
     const current = parseFloat(this.currentOperand)
-    if (isNaN(prev) || isNaN (current)) return
-    switch (this.operation) {
-        case '+':
-            computation = prev + current
-            break
-        case '-':
-            computation = prev - current
-            break
-        case '*':
-            computation = prev * current
-            break
-        case '÷':
-            computation = prev / current
-            break
-        default:
-            return
-}
+    if (!(isNaN(prev) || isNaN(current))) {
+        switch (this.operation) {
+            case '+':
+                computation = prev + current
+                break
+            case '-':
+                computation = prev - current
+                break
+            case '*':
+                computation = prev * current
+                break
+            case '÷':
+                computation = prev / current
+                break
+        }
+    }
     this.currentOperand = computation
     this.operation = undefined
     this.prevousOperand = ''
@@ -74,13 +76,11 @@ compute(); {
 
 
 updateDisplay(); {
-        this.currentOperandTextElement.innerText = 
-        this.getDisplayNumber(this.currentOperand)
+        this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
         if (this.operation != null) {
-        this.previousOpendTextElement.innerText = 
-        '$(this.getDisplayNumber(this.previousOperand)) ${this.operation}'
+        this.previousOpendTextElement.innerText = '$(this.getDisplayNumber(this.previousOperand)) ${this.operation}'
 
-}
+    }
 }
 
 
@@ -125,10 +125,9 @@ getDisplayNumber (number); {
 
 
 }
-    if (decimalDigits !=null) {
-        return '${intgerDisplay}.${decimalDigits}'
-    }
-    else {
-        return intergerDisplay
-    }
+if (decimalDigits !=null) {
+    return '${intgerDisplay}.${decimalDigits}'
+}
+else {
+    return intergerDisplay
 }
