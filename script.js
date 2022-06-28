@@ -1,8 +1,9 @@
-class calculator {
+class Calculator {
     constructor(previousOpendTextElement, currentOperandTextElement) {
-    this.previousOpendTextElement = previousOpendTextElement;
-    this.currentOperandTextElement = currentOperandTextElement;
-    this.allClearButton()}
+        this.previousOpendTextElement = previousOpendTextElement;
+        this.currentOperandTextElement = currentOperandTextElement;
+        this.allClearButton()
+    }
 }
 
 
@@ -14,42 +15,41 @@ const allClearButton = document.querySelector('[data-all-clear]');
 const previousOpendTextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand]');
 
-const calculator = new Calculator(previousOpendTextElement. currentOperandTextElement);
+const calculator = new Calculator(previousOpendTextElement.currentOperandTextElement);
 
-clear() ;{
+clear(); {
     this.currentOperand = '';
     this.previousOperand = '';
     this.operation = undefined;
-  }
+}
 
 
 
-  del() ;{
+del(); {
     this.currentOperand = this.currentOperand.toString().slice(0, -1);
-  }
- 
-deleteButton.addEventListener('click', button  => {
+}
+
+deleteButton.addEventListener('click', button => {
     Calculator.del();
     Calculator.updateDisplay();
 
 });
 
-appendNumber(number) ;{
-    if (!(number === '.' && this.currentOperand.includes('.')))
-    {   
+function appendNumber(number) {
+    if (!(number === '.' && this.currentOperand.includes('.'))) {
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 }
 
-chooseOperation(operation); {
-     if  (this.operation === '') this.operation = operation;
-     if (this.previousOperand !== '') {
+function chooseOperation(operation) {
+    if (this.operation === '') this.operation = operation;
+    if (this.previousOperand !== '') {
         this.compute();
-     }
+    }
 }
 
-compute(); {
-    let computation; 
+function compute() {
+    let computation;
     const prev = parseFloat(this.prevousOperand);
     const current = parseFloat(this.currentOperand);
     if (!(isNaN(prev) || isNaN(current))) {
@@ -75,9 +75,9 @@ compute(); {
 }
 
 
-updateDisplay(); {
-        this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
-        if (this.operation != null) {
+function updateDisplay() {
+    this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
+    if (this.operation != null) {
         this.previousOpendTextElement.innerText = '$(this.getDisplayNumber(this.previousOperand)) ${this.operation}';
 
     }
@@ -88,16 +88,15 @@ numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         Calculator.appendNumber(button.innerText);
         Calculator.updateDisplay();
-
     });
 });
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
-        Calculator. chooseOperation(button.innerText);
+        Calculator.chooseOperation(button.innerText);
         Calculator.updateDisplay();
 
-});
+    });
 });
 
 equalsButton.addEventListener('click', button => {
@@ -111,7 +110,7 @@ allClearButton.addEventListener('click', button => {
     Calculator.updateDisplay();
 });
 
-getDisplayNumber (number); {
+getDisplayNumber(number); {
     const stringNumber = number.toString();
     const intergerDigits = parseFloat(stringNumber.split('.')[0]);
     const decimalDigits = stringNumber.split('.')[1];
@@ -119,15 +118,15 @@ getDisplayNumber (number); {
     if (isNaN(intergerDigits)) {
         intergerDisplay = '';
 
-    } else { 
-        intergerDisplay = intergerDigits.toLocaleString('en', {maxiumFractionDigits: 0});
-}
+    } else {
+        intergerDisplay = intergerDigits.toLocaleString('en', { maxiumFractionDigits: 0 });
+    }
 
 
 }
-if (decimalDigits !=null) {
-    return '${intgerDisplay}.${decimalDigits}';
-}
-else {
-    return intergerDisplay;
-}
+// if (decimalDigits != null) {
+//     return `${intgerDisplay}.${decimalDigits}`;
+// }
+// else {
+//     return intergerDisplay;
+// }
